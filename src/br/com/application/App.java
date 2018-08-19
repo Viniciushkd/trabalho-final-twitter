@@ -13,6 +13,7 @@ import twitter4j.Query;
 import twitter4j.QueryResult;
 import twitter4j.Status;
 import twitter4j.Twitter;
+import twitter4j.TwitterException;
 import twitter4j.TwitterFactory;
 
 public class App {
@@ -24,6 +25,8 @@ public class App {
 		
 		HashMap<String , ControleTweet> hm = new HashMap<>();
 		
+		
+//      BUSCA TWEET
 		for(int i=7;i>0;i--) {
 			LocalDateTime dateLast = LocalDateTime.of(dateNow.getYear(), dateNow.getMonth(), dateNow.getDayOfMonth() - i-1, dateNow.getHour(), dateNow.getMinute());
 			LocalDateTime dateAfter = LocalDateTime.of(dateNow.getYear(), dateNow.getMonth(), dateNow.getDayOfMonth() - i, dateNow.getHour(), dateNow.getMinute());
@@ -60,6 +63,14 @@ public class App {
 			System.out.println("Primeiro da lista: " + listaTweets.stream().findFirst().get().getNome());
 			System.out.println("Ultimo da lista: " + listaTweets.get(listaTweets.size()-1)+"\n");
 		}
+		
+		
+//		POST TWEET
+//		try {
+//			postTweet("Trabalho Final Fundamento Plataforma Java e UML - @michelpf", twitter);
+//		} catch (TwitterException e) {
+//			e.printStackTrace();
+//		}
 	}
 
 	private static ControleTweet buscaTwitter(String busca, Twitter twitter) {
@@ -91,5 +102,10 @@ public class App {
 			e.printStackTrace();
 		}
 		return null;
+	}
+	
+	private static void postTweet(String texto, Twitter twitter) throws TwitterException {
+	    Status status = twitter.updateStatus(texto);
+	    System.out.println("Successfully updated the status to [" + status.getText() + "].");
 	}
 }
