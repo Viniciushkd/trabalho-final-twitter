@@ -1,4 +1,4 @@
-package br.com.aplication;
+package br.com.application;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
