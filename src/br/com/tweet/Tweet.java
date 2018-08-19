@@ -7,7 +7,6 @@ public class Tweet implements Comparable<Tweet>{
 	private String nome;
 	private Date data;
 	private String tweet;
-	private boolean isReTweet;
 	
 	public String getNome() {
 		return nome;
@@ -27,13 +26,7 @@ public class Tweet implements Comparable<Tweet>{
 	public void setTweet(String tweet) {
 		this.tweet = tweet;
 	}
-	public boolean isReTweet() {
-		return isReTweet;
-	}
-	public void setReTweet(boolean isReTweet) {
-		this.isReTweet = isReTweet;
-	}
-	
+
 	@Override
 	public int compareTo(Tweet arg0) {
 		return this.nome.compareTo(arg0.nome);
