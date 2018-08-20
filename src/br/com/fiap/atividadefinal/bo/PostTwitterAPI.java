@@ -1,4 +1,4 @@
-package br.com.fiap.atividadefinal.service;
+package br.com.fiap.atividadefinal.bo;
 
 import java.text.SimpleDateFormat;
 import java.time.LocalDateTime;
@@ -10,7 +10,9 @@ import java.util.Map;
 
 import br.com.fiap.atividadefinal.vo.ControleTweetVO;
 import br.com.fiap.atividadefinal.vo.TweetVO;
+import twitter4j.Status;
 import twitter4j.Twitter;
+import twitter4j.TwitterException;
 import twitter4j.TwitterFactory;
 
 public class PostTwitterAPI {
@@ -70,19 +72,13 @@ public class PostTwitterAPI {
 	}
 
 	private void postTweet(String texto) {
-		System.out.print(texto.toString() + "\n\n");
+		try {
+			Status status = twitter.updateStatus(texto);
 
-//		Status status = null;
-//
-//		try {
-//			status = twitter.updateStatus(texto);
-//		} catch (TwitterException e) {
-//			e.printStackTrace();
-//		}
-//
-//		if (status != null) {
-//			System.out.println("Successfully updated the status to [" + status.getText() + "].");
-//		}
+			System.out.println("Post efetuado com sucesso [" + status.getText() + "].");
+		} catch (TwitterException e) {
+			e.printStackTrace();
+		}
 	}
 
 }

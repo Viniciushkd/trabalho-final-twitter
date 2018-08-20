@@ -1,4 +1,4 @@
-package br.com.fiap.atividadefinal.service;
+package br.com.fiap.atividadefinal.bo;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
