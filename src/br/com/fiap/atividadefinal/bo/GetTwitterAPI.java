@@ -7,6 +7,8 @@ import java.util.List;
 import java.util.Map;
 import java.util.TreeMap;
 
+import javax.swing.JOptionPane;
+
 import br.com.fiap.atividadefinal.vo.ControleTweetVO;
 import br.com.fiap.atividadefinal.vo.TweetVO;
 import twitter4j.Query;
@@ -19,6 +21,7 @@ import twitter4j.TwitterFactory;
 public class GetTwitterAPI {
 
 	private static final DateTimeFormatter DATE_PATTERN = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+	private static final DateTimeFormatter DATE_PATTERN_2 = DateTimeFormatter.ofPattern("dd/MM/yyyy");
 	private String chave;
 
 	private Twitter twitter;
@@ -49,6 +52,16 @@ public class GetTwitterAPI {
 			List<TweetVO> tweets = buscaTweets(since, until);
 
 			var controle = montaControle(tweets);
+
+			StringBuilder sb = new StringBuilder();
+
+			sb.append("Para o dia ").append(since.format(DATE_PATTERN_2)).append(" foram encontrados:\n");
+			sb.append(controle.getQuantidade()).append(" tweets no total\n");
+			sb.append(controle.getQuantidadeReTweet()).append(" foram retweets\n");
+			sb.append(controle.getQuantidadeReTweet()).append(" foram favoritados\n");
+			sb.append("Pressione Ok para continuar");
+
+			JOptionPane.showMessageDialog(null, sb.toString(), "Twitter", JOptionPane.INFORMATION_MESSAGE);
 
 			resultado.put(since, controle);
 		}
