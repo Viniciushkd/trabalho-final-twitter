@@ -58,7 +58,7 @@ public class GetTwitterAPI {
 			sb.append("Para o dia ").append(since.format(DATE_PATTERN_2)).append(" foram encontrados:\n");
 			sb.append(controle.getQuantidade()).append(" tweets no total\n");
 			sb.append(controle.getQuantidadeReTweet()).append(" foram retweets\n");
-			sb.append(controle.getQuantidadeReTweet()).append(" foram favoritados\n");
+			sb.append(controle.getQuantidadeFavorited()).append(" foram favoritados\n");
 			sb.append("Pressione Ok para continuar");
 
 			JOptionPane.showMessageDialog(null, sb.toString(), "Twitter", JOptionPane.INFORMATION_MESSAGE);

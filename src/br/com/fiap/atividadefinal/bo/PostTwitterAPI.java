@@ -8,6 +8,8 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Map;
 
+import javax.swing.JOptionPane;
+
 import br.com.fiap.atividadefinal.vo.ControleTweetVO;
 import br.com.fiap.atividadefinal.vo.TweetVO;
 import twitter4j.Status;
@@ -73,8 +75,11 @@ public class PostTwitterAPI {
 
 	private void postTweet(String texto) {
 		try {
-			Status status = twitter.updateStatus(texto);
+			Status status = twitter.updateStatus(texto + " \n@michelpf");
 
+			String mensagem = "Tweet postado com sucesso!\n" + status.getText();
+
+			JOptionPane.showMessageDialog(null, mensagem, "Tweet", JOptionPane.INFORMATION_MESSAGE);
 			System.out.println("Post efetuado com sucesso [" + status.getText() + "].");
 		} catch (TwitterException e) {
 			e.printStackTrace();
